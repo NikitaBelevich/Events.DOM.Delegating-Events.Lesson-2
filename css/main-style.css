@@ -1,0 +1,12 @@
+html, body {
+    font-family: serif;
+}
+body {
+    margin: 20px;
+    background-color: rgb(228, 228, 228);
+    height: 2000px;
+}
+input[type="number"]{
+    width: 80px;
+}
+
