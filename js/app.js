@@ -14,3 +14,31 @@ but1.addEventListener('click', () => {
 });
 
 // TODO Task1 
+
+// TODO Task 2
+const tableUsers = document.querySelector('.task2 table');
+const formAddingUsers = document.querySelector('.task2 form');
+const [inp2, but2] = formAddingUsers.elements; //* положили поле ввода и кнопку
+
+// добавление пользователя через форму и кнопку
+but2.addEventListener('click', addingAUserInTable);
+function addingAUserInTable() {
+    const [name, surname] = inp2.value.trim().split(' ');
+    if (name && surname) {
+        tableUsers.lastElementChild.insertAdjacentHTML('beforeend', `<tr> <td>${name}</td> <td>${surname}</td> </tr>`);
+    }
+}
+
+tableUsers.addEventListener('dblclick', editACell);
+function editACell(event) {
+    const targetCell = event.target.closest('td'); // только td, не th
+    let newChange;
+    
+    if (targetCell) {
+        newChange = prompt('Change?', targetCell.textContent);
+        if (newChange) { // если не null
+            targetCell.textContent = newChange;
+        }
+    }
+}
+// TODO Task 2
