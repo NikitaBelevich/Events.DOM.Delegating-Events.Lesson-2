@@ -33,7 +33,7 @@ tableUsers.addEventListener('dblclick', editACell);
 function editACell(event) {
     const targetCell = event.target.closest('td'); // только td, не th
     let newChange;
-    
+
     if (targetCell) {
         newChange = prompt('Change?', targetCell.textContent);
         if (newChange) { // если не null
@@ -42,3 +42,20 @@ function editACell(event) {
     }
 }
 // TODO Task 2
+
+// TODO Task 3
+const list3 = document.querySelector('.task3 .tree');
+
+list3.addEventListener('click', closeOpenList);
+function closeOpenList(event) {
+    if (event.target.tagName == 'SPAN') {
+        const targetLi = event.target.closest('li');
+        const childUl = targetLi.lastElementChild; // последний дочерний узел
+
+        childUl.classList.toggle('hide-show-list');
+        setTimeout(() => {
+            childUl.classList.toggle('delete-list');
+        }, 160);
+    }
+}
+// TODO Task 3

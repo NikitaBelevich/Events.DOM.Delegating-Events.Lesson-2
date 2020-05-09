@@ -21,3 +21,27 @@ input[type="number"]{
 .task2 form {
     margin-top: 10px;
 }
+
+
+.task3 .tree li > ul {
+    transition: .2s ease-out;
+}
+
+.hide-show-list {opacity: 0;}
+.delete-list {display: none;}
+
+.task3 .tree li > span {
+    transition: .2s;
+    cursor: pointer;
+}
+.task3 .tree li > span:hover{
+    text-shadow: 0 0 2px #000;
+}
+
+
+
+
+
+
+
+
