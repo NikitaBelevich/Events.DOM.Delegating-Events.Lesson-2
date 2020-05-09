@@ -59,3 +59,35 @@ function closeOpenList(event) {
     }
 }
 // TODO Task 3
+
+// TODO Task 4
+
+const table4 = document.querySelector('.task4 #grid');
+table4.addEventListener('click', (event) => {
+    const targetTh = event.target;
+    if (targetTh.tagName != 'TH') return;
+
+    sortTable(targetTh.dataset.type);
+});
+
+function sortTable(type) {
+    const rows = Array.from(table4.rows).slice(1); // массив строк без включения строки заголовка
+    const tBody = table4.lastElementChild;
+
+    const sortMethods = {
+        number() {
+            rows.sort((a, b) => {
+                return a.cells[0].textContent - b.cells[0].textContent;
+            });
+        },
+        string() {
+            rows.sort((a, b) => {
+                return a.cells[1].textContent > b.cells[1].textContent ? 1 : -1;
+            });
+        }
+    };
+    sortMethods[type](); // вызываем метод исходя из нажатой ячейки
+   
+    tBody.append(...rows);
+}
+// TODO Task 4
