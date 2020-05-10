@@ -91,3 +91,49 @@ function sortTable(type) {
     tBody.append(...rows);
 }
 // TODO Task 4
+
+// TODO Task 5
+const wrapperTip = document.querySelector('.task5 .wrapper-tip');
+const but3 = wrapperTip.querySelector('button');
+
+document.addEventListener('mouseover', (e) => {
+    const target = e.target;
+    const dataAttrContent = target.dataset.tooltip; // наш атрибут с контентом подсказки
+    if (dataAttrContent === undefined) return; // если нет дата атрибута подсказки, значит ничего не делаем
+
+    const coordinatesTarget = target.getBoundingClientRect(); //* получаем координаты целевой кнопки
+
+    const tipBlock = document.createElement('div');
+    tipBlock.classList.add('tooltip'); //* стилизуем
+    tipBlock.innerHTML = dataAttrContent; //* добавляем контент 
+    wrapperTip.append(tipBlock); //* добавляем на страницу
+    setTimeout(() => { // плавно проявляем
+        tipBlock.style.opacity = 1;
+    });
+
+    let left = coordinatesTarget.left + (target.offsetWidth - tipBlock.offsetWidth) / 2; // с центровкой
+    left = (left < 0) ? 0 : left; // если меньше 0, то прижимаем подсказку к краю
+
+    let top = coordinatesTarget.top - tipBlock.offsetHeight - 5;
+    if (coordinatesTarget.top < tipBlock.offsetHeight) { // если высота до элемента меньше высоты подсказки, то выводим снизу
+        top = coordinatesTarget.bottom + 5;
+    }
+
+    tipBlock.style.cssText = `left: ${left}px;
+                              top: ${top}px;
+                              `;
+});
+
+document.addEventListener('mouseout', (e) => {
+    const target = e.target;
+    const dataAttrContent = target.dataset.tooltip; // наш атрибут с контентом подсказки
+    if (dataAttrContent === undefined) return;
+
+    const tipBlocks = wrapperTip.querySelectorAll('.tooltip');
+    // коллекция для того, чтобы наверняка собрать и удалить из дерева все подсказки, которые из-за паузы просто стали opacity
+    tipBlocks.forEach(el => {el.style.opacity = 0;}); // плавно скрываем
+    setTimeout(() => {
+        tipBlocks.forEach(el => {el.remove()}); // через время удаляем из DOM
+    }, 310); // transition для подсказки .3s
+});
+// TODO Task 5
