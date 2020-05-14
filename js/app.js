@@ -137,3 +137,14 @@ document.addEventListener('mouseout', (e) => {
     }, 310); // transition для подсказки .3s
 });
 // TODO Task 5
+
+// TODO Task 6
+const containerSmartLinks = document.getElementById('smart-links');
+containerSmartLinks.addEventListener('click', (event) => {
+    const targetAnchor = event.target.closest('a');
+    if (targetAnchor) {
+        const question = confirm(`Перейти на ${targetAnchor.href}?`);
+        if (!question) event.preventDefault();
+    }
+});
+// TODO Task 6
