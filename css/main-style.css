@@ -73,6 +73,41 @@ table#grid {
     transition: .3s ease;
 }
 
-
+/* галерея */
+.image-gallery {
+    width: 700px;
+}
+.image-gallery__full-img {
+    margin: 0;
+    width: 700px;
+    height: 525px;
+    border: 1px solid gray;
+    padding: 5px;
+}
+.image-gallery__full-img img {
+    max-width: 100%;
+}
+.image-gallery__small-imgages {
+    width: 102%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin-top: 15px;
+    padding: 0 5px 5px 5px;
+    border: 1px solid gray;
+}
+.image-gallery__block-img {
+    height: 100%;
+    margin-top: 5px;
+}
+.image-gallery__block-img img {
+    display: block;
+    height: 100px;
+    padding: 2px;
+    border: 1px solid gray;
+    cursor: pointer;
+    -webkit-user-drag: none;
+}
 
 

@@ -148,3 +148,17 @@ containerSmartLinks.addEventListener('click', (event) => {
     }
 });
 // TODO Task 6
+
+// TODO Task 7
+const imgGallery = document.querySelector('.task7 .image-gallery');
+const mainImage = imgGallery.firstElementChild.querySelector('img');
+const imagesContainer = imgGallery.lastElementChild;
+imagesContainer.addEventListener('click', changeImage);
+
+function changeImage(event) {
+    const target = event.target;
+    if (target.tagName == 'IMG') {
+        mainImage.setAttribute('src', target.src);
+    }
+}
+// TODO Task 7
