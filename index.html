@@ -224,6 +224,47 @@
     </div>
     <hr>
 
+    <div>
+        <p>Task 8. Очистите элемент. Создайте функцию clear(elem), которая удаляет всё содержимое из elem.</p>
+        <div class="task8">
+            <p>Дана таблица с колонками 'имя', 'фамилия', 'удалить'. Сделайте под ней 2 инпута и кнопку. Если ввести в
+                эти инпуты имя и фамилию и нажать на кнопку - в таблицу должен добавиться новый ряд. В каждом ряду
+                должна быть кнопочка 'удалить' (третий столбец), по нажатию на которую этот ряд удалится.
+                <br>
+                Также сделайте так, чтобы можно было поредактировать любую ячейку с именем и фамилией - по клику на
+                ячейку в ней должен появиться инпут с текстом этой ячейки, этот текст можно поменять, нажать Enter - и
+                инпут исчезнет, а информация в ячейке обновится.
+            </p>
+
+            <table class="users-table">
+                <caption>Users</caption>
+
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Clear</th>
+                    </tr>
+                    <tr>
+                        <td>Tony</td>
+                        <td>Stark</td>
+                        <td align="center"><button class="clear-row-table">Clear</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <form action="#" class="form-add">
+                <fieldset>
+                    <legend>New User</legend>
+                    <input type="text" name="name" placeholder="Name">
+                    <input type="text" name="surname" placeholder="Surname">
+                    <button type="button">Add User</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <hr>
+
     <script src="js/app.js" defer></script>
 </body>
 

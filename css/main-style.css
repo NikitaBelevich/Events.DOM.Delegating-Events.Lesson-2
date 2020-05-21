@@ -110,4 +110,22 @@ table#grid {
     -webkit-user-drag: none;
 }
 
+.users-table {
+    border-collapse: collapse;
+}
+.users-table th, td{
+    min-width: 100px;
+    padding: 5px 8px;
+    border: 1px solid black;
+}
+
+.form-add {
+    margin-top: 15px;
+    width: 54%;
+}
+
+.edit-user-input {
+    margin-left: 5px;
+}
+
 

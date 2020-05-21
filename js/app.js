@@ -162,3 +162,65 @@ function changeImage(event) {
     }
 }
 // TODO Task 7
+
+// TODO Task 8
+const tableUsers2 = document.querySelector('.task8 .users-table');
+const tableBody = tableUsers2.querySelector('tbody');
+const formAdd = document.querySelector('.form-add');
+
+//* Добавление
+const addRecordButton = formAdd.querySelector('button');
+addRecordButton.addEventListener('click', addNewUser);
+function addNewUser() {
+    const userName = formAdd.elements.name.value.trim();
+    const userSurname = formAdd.elements.surname.value.trim();
+
+    if (!userName || !userSurname) return; // если пустые строки
+
+    tableBody.insertAdjacentHTML('beforeend', `
+        <tr>
+            <td>${userName}</td>
+            <td>${userSurname}</td>
+            <td align="center"><button class="clear-row-table">Clear</button></td>
+        </tr>
+    `);
+}
+
+//* Удаление
+tableUsers2.addEventListener('click', removeUser);
+function removeUser(event) {
+    const target = event.target;
+    const removeButton = target.closest('button');
+    if (!removeButton) return; // если не кнопка
+
+    const targetRow = removeButton.parentElement.parentElement;
+    targetRow.remove();
+}
+
+//* Редактирование
+tableUsers2.addEventListener('click', editUser);
+function editUser(event) {
+    const target = event.target;
+    const targetCell = target.closest('td');
+    if (!targetCell || targetCell.children.length != 0) return; // если null или ячейка с кнопкой, то выходим
+
+    const editInput = document.createElement('input');
+    editInput.type = 'text';
+    editInput.title = 'Press Enter';
+    editInput.value = `${targetCell.textContent}`; // добавляем в инпут текст целевой ячейки
+    editInput.className = 'edit-user-input'; // добавим класс стилей
+    targetCell.append(editInput); // добавили в ячейку
+    editInput.focus(); // ставим фокус
+
+    editInput.addEventListener('keyup', function (event){
+        if (event.code == 'Enter') {
+            const newValue = this.value;
+            targetCell.textContent = newValue; // записали новое значение
+        }
+    });
+    editInput.addEventListener('blur', function() { // при потере фокуса просто удаляем поле
+        this.remove();
+    });
+}
+
+// TODO Task 8
